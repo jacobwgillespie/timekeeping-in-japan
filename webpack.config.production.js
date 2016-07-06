@@ -11,7 +11,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "bundle.js",
-    publicPath: "/dist/"
+    publicPath: "/"
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -40,6 +40,10 @@ module.exports = {
     }, {
       test: /\.css$/,
       loader: "style-loader!css-loader"
+    }, {
+      test: /\.scss$/,
+      loaders: ["style", "css", "sass"],
+      include: __dirname
     }, {
       test: /\.(png|jpg|gif)$/,
       loader: "url-loader?limit=8192"
